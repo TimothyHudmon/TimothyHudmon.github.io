@@ -8,23 +8,26 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(162, 120, 240);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
-			display: block;
+			display: block; 
 			position: absolute;
-			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			top: 350px;
+			font-family: monospace;
+			left: 5px;  /* <--- Change me! */
 		}
 		.board{
 			height: 100vh;
 		}
 	</style>
+	
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
 <body class="board">
+	<h1>BOUNCING BOX</h1>
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -62,7 +65,9 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
+			var posistionX = 0
+			var points = 0
+			var speed = 10
 
 			
 			/* 
@@ -71,6 +76,15 @@
 			turn it around! 
 			*/
 			function update() {
+				/* you're code to increase by 10 here */
+				posistionX  = posistionX + speed
+				moveBoxTo(posistionX)
+				if(posistionX > boardWidth){
+					speed = speed * -1
+				}
+				if(posistionX < 0){
+					speed = speed * -1
+				}
 				
 
 			};
@@ -81,7 +95,10 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
+				posistionX = 0
+				points = points + 1
+				changeBoxText(points)
+				speed = speed + 3
 
 
 			};
